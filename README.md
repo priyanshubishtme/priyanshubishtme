@@ -8,8 +8,6 @@
 
 ![Profile identity card](assets/id-dashboard.svg?v=1)
 
-![Connect with Priyanshu](assets/connect.svg?v=1)
-
 </div>
 
 ## Selected projects

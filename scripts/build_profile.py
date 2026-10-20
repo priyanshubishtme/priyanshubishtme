@@ -104,17 +104,21 @@ def build() -> None:
         ring = i % 3
         rx, ry, tilt = [(356, 75, -10), (292, 54, 12), (222, 38, -20)][ring]
         angle = (i // 3 / 4) * 6.28318 + math.radians([0, 30, 60][ring])
-        radians = math.radians(tilt)
-        dx, dy = rx * math.cos(angle), ry * math.sin(angle)
-        cx = 480 + dx * math.cos(radians) - dy * math.sin(radians)
-        cy = 250 + dx * math.sin(radians) + dy * math.cos(radians)
-        orbit_items[ring].append(f'<g transform="translate({cx:.1f} {cy:.1f})"><circle r="22" fill="#101a2c" stroke="{BLUE if i%2==0 else RED}" stroke-opacity=".65"/><path d="{icon_path(slug)}" transform="translate(-8 -8) scale(.67)" fill="{WHITE}"/><title>{html.escape(label)}</title></g>')
+        # The parent group scales a circle into the visible ellipse. The inner
+        # inverse scale keeps each icon round while it follows that ellipse.
+        x, y = rx * math.cos(angle), rx * math.sin(angle)
+        inverse_y = rx / ry
+        orbit_items[ring].append(f'<g transform="translate({x:.1f} {y:.1f})"><g transform="scale(1 {inverse_y:.4f})"><circle r="22" fill="#101a2c" stroke="{BLUE if i%2==0 else RED}" stroke-opacity=".65"/><path d="{icon_path(slug)}" transform="translate(-8 -8) scale(.67)" fill="{WHITE}"/><title>{html.escape(label)}</title></g></g>')
     chips = []
     for i, label in enumerate(labels):
         x = 52 + (i % 8) * 108
         y = 382 + (i // 8) * 38
         chips.append(f'<g><rect x="{x}" y="{y}" width="96" height="27" rx="13.5" fill="#101a2c" stroke="#26334c"/><text x="{x+48}" y="{y+18}" text-anchor="middle" font-size="11">{html.escape(label)}</text></g>')
-    orbit_svg_markup = "".join(f'<g class="orbit-motion"><animateTransform attributeName="transform" type="rotate" values="0 480 250;360 480 250" keyTimes="0;1" dur="{duration}s" repeatCount="indefinite" begin="0s"/>{"".join(items)}</g>' for items, duration in zip(orbit_items, [44, 36, 29]))
+    ring_specs = [(356, 75, -10), (292, 54, 12), (222, 38, -20)]
+    orbit_svg_markup = "".join(
+        f'<g transform="translate(480 250) rotate({tilt}) scale(1 {ry/rx:.4f})">{"".join(items)}</g>'
+        for items, (rx, ry, tilt) in zip(orbit_items, ring_specs)
+    )
     write_svg("stack.svg", 960, 490, f'''
 <text x="50" y="55" class="mono" font-size="13" fill="{BLUE}">PROFILE / 03 — THE TOOLKIT</text><text x="50" y="105" class="display" font-size="42">TOOLS IN ORBIT.</text><text x="52" y="136" font-size="13" fill="{MUTED}">Grouped by the work they help me ship.</text>
 <ellipse cx="480" cy="250" rx="356" ry="75" fill="none" stroke="#293650" stroke-width="1.5" transform="rotate(-10 480 250)"/><ellipse cx="480" cy="250" rx="291" ry="54" fill="none" stroke="url(#stack-svg-edge)" stroke-opacity=".4" transform="rotate(12 480 250)"/><ellipse cx="480" cy="250" rx="222" ry="38" fill="none" stroke="#293650" stroke-opacity=".72" transform="rotate(-20 480 250)"/>{orbit_svg_markup}
@@ -144,7 +148,9 @@ def build() -> None:
 </g>
 ''', "Profile identity card — README snapshot dated 20 October 2026")
 
-    write_svg("connect.svg", 960, 370, f'''
+    # Kept as source-only design history; the Connect SVG is no longer generated.
+    build_connect_panel = False
+    if build_connect_panel: write_svg("connect.svg", 960, 370, f'''
 <text x="50" y="56" class="mono" font-size="13" fill="{BLUE}">PROFILE / 05 — OPEN CHANNEL</text><text x="50" y="105" class="display" font-size="42">LET’S BUILD</text><text x="50" y="150" class="display" font-size="42" fill="{RED}">SOMETHING GOOD.</text>
 <image href="{pointing}" x="42" y="156" width="420" height="204" preserveAspectRatio="xMinYMax meet"/>
 <g transform="translate(498 85)">
@@ -157,12 +163,62 @@ def build() -> None:
 
     # GitHub profile README uses repo-relative assets and real HTML links below the image.
     readme = '''<div align="center">\n\n![Priyanshu Bisht — frontend developer and builder](assets/hero.svg?v=1)\n\n![About Priyanshu](assets/about-life.svg?v=1)\n\n![Priyanshu's technology stack](assets/stack.svg?v=1)\n\n![Profile identity card](assets/id-dashboard.svg?v=1)\n\n![Connect with Priyanshu](assets/connect.svg?v=1)\n\n</div>\n\n## Selected projects\n\n| Project | Focus | Technical implementation |\n|---|---|---|\n| [AshaPure](https://github.com/priyanshubishtme/ashapur_customer) | Dairy commerce with shopping, checkout, subscriptions, and role-based access. | React frontend, Node.js backend, MongoDB data store. |\n| [Arena Self-Driving](https://github.com/priyanshubishtme/arena-self-driving) | Autonomous highway-driving simulator with a tabular SARSA agent. | Python, Gymnasium environment, FastAPI control surface. |\n| [ZenAlert — SIH26178](https://github.com/priyanshubishtme/zen-alert) | Environmental early-warning dashboard plus sensor-node simulation. | FastAPI, MapLibre, Three.js; ESP32-S2 node and KiCad PCB design. |\n| [LinkPulse](https://github.com/priyanshubishtme/pulse) | Governed short links, campaigns, QR generation, analytics, and admin controls. | React, Express, TypeScript, PostgreSQL, Prisma; Redis is optional. |\n| [Stardela](https://github.com/priyanshubishtme/stardela) | Daily Colour Binary and Guzzle puzzles across three difficulty levels. | React 19, TypeScript, Vite, Vitest. |\n| [Little Universe Portfolio](https://github.com/priyanshubishtme/cool-website) | Route-based portfolio inside an explorable foothill town with a visual fallback. | Three.js, Rapier physics, Vite. |\n\n## Contribution activity\n\n![GitHub contribution activity](https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake.svg?v=1)\n\n## Connect\n\n| [Portfolio](https://priyanshubishtme.netlify.app/) | [LinkedIn](https://linkedin.com/in/priyanshubishtme) | [YouTube](https://youtube.com/@priyanshubishtme) | [Email](mailto:priyanshubisht.me@gmail.com) |\n|---|---|---|---|\n\n'''
+    readme = readme.replace("![Connect with Priyanshu](assets/connect.svg?v=1)\n\n", "")
     (ROOT / "README.md").write_text(readme, encoding="utf-8")
 
-    preview = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Priyanshu Bisht — README preview</title><style>body{margin:0;background:#070b16;color:#f4f6fb;font:16px/1.5 Arial,sans-serif}.wrap{max-width:980px;margin:32px auto;padding:0 16px}img{display:block;width:100%;height:auto;margin:0 0 18px;border-radius:20px}h1{font-size:16px;color:#9da8bc;font-weight:400;margin:28px 0 8px}a{color:#77aaff}.chips a{display:inline-block;background:#101a2c;border:1px solid #293650;border-radius:999px;padding:5px 10px;margin:3px;text-decoration:none}.table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #2a3550;padding:10px;text-align:left}@media(max-width:560px){.table,.table tbody,.table tr,.table td{display:block;width:100%;box-sizing:border-box}.table th{display:none}.table tr{padding:8px 0}.table td{padding:4px 0;border:0}.table tr+tr{border-top:1px solid #2a3550}}</style><main class="wrap"><h1>README preview · five self-contained SVGs</h1>'''
-    for file in ["hero.svg", "about-life.svg", "stack.svg", "id-dashboard.svg", "connect.svg"]:
-        preview += f'<img src="assets/{file}" alt="{file.removesuffix(".svg").replace("-", " ")}">'
-    preview += '''<h1>Featured work</h1><table class="table"><tr><th>Project</th><th>Description</th><th>Stack</th></tr><tr><td><a href="https://github.com/priyanshubishtme/ashapur_customer">AshaPure</a></td><td>Smart dairy commerce, built end-to-end</td><td>React / Node.js / MongoDB</td></tr><tr><td><a href="https://github.com/priyanshubishtme/arena-self-driving">Arena Self-Driving</a></td><td>Autonomous highway simulator using tabular SARSA</td><td>Python / Gymnasium / FastAPI</td></tr><tr><td><a href="https://github.com/priyanshubishtme/zen-alert">ZenAlert - SIH26178</a></td><td>Environmental early-warning dashboard and sensor-node prototype</td><td>FastAPI / MapLibre / Three.js / ESP32-S2 / KiCad</td></tr><tr><td><a href="https://github.com/priyanshubishtme/pulse">LinkPulse</a></td><td>Governed short links, analytics, QR creation, and administration; not deployed</td><td>React / Express / PostgreSQL / Prisma</td></tr><tr><td><a href="https://github.com/priyanshubishtme/stardela">Stardela</a></td><td>Daily Colour Binary and Guzzle puzzles across three difficulty tiers</td><td>React 19 / TypeScript / Vite</td></tr><tr><td><a href="https://github.com/priyanshubishtme/cool-website">Little Universe Portfolio</a></td><td>Route-based portfolio in an explorable 3D foothill town, with illustrated fallback</td><td>Three.js / Rapier / Vite</td></tr></table><p><a href="https://priyanshubishtme.netlify.app/">Portfolio</a> / <a href="https://linkedin.com/in/priyanshubishtme">LinkedIn</a> / <a href="https://youtube.com/@priyanshubishtme">YouTube</a> / <a href="mailto:priyanshubisht.me@gmail.com">Email</a></p></main></html>'''
+    preview_images = "\n".join(
+        f'    <img src="assets/{file}" alt="{file.removesuffix(".svg").replace("-", " ")}">'
+        for file in ["hero.svg", "about-life.svg", "stack.svg", "id-dashboard.svg"]
+    )
+    preview = f'''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Priyanshu Bisht — README preview</title>
+  <style>
+    body {{ margin: 0; background: #070b16; color: #f4f6fb; font: 16px/1.5 Arial, sans-serif; }}
+    .wrap {{ max-width: 980px; margin: 32px auto; padding: 0 16px; }}
+    img {{ display: block; width: 100%; height: auto; margin: 0 0 18px; border-radius: 20px; }}
+    h1 {{ margin: 28px 0 8px; color: #9da8bc; font-size: 16px; font-weight: 400; }}
+    a {{ color: #77aaff; }}
+    .table {{ width: 100%; border-collapse: collapse; }}
+    td, th {{ padding: 10px; border-bottom: 1px solid #2a3550; text-align: left; }}
+    @media (max-width: 560px) {{
+      .table, .table tbody, .table tr, .table td {{ display: block; width: 100%; box-sizing: border-box; }}
+      .table th {{ display: none; }}
+      .table tr {{ padding: 8px 0; }}
+      .table td {{ padding: 4px 0; border: 0; }}
+      .table tr + tr {{ border-top: 1px solid #2a3550; }}
+    }}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>README preview · five self-contained SVGs</h1>
+{preview_images}
+    <h1>Selected projects</h1>
+    <table class="table">
+      <thead><tr><th>Project</th><th>Focus</th><th>Technical implementation</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/priyanshubishtme/ashapur_customer">AshaPure</a></td><td>Dairy commerce</td><td>React / Node.js / MongoDB</td></tr>
+        <tr><td><a href="https://github.com/priyanshubishtme/arena-self-driving">Arena Self-Driving</a></td><td>Tabular SARSA simulator</td><td>Python / Gymnasium / FastAPI</td></tr>
+        <tr><td><a href="https://github.com/priyanshubishtme/zen-alert">ZenAlert</a></td><td>Early-warning dashboard</td><td>FastAPI / MapLibre / Three.js</td></tr>
+        <tr><td><a href="https://github.com/priyanshubishtme/pulse">LinkPulse</a></td><td>Governed short links</td><td>React / Express / PostgreSQL / Prisma</td></tr>
+        <tr><td><a href="https://github.com/priyanshubishtme/stardela">Stardela</a></td><td>Daily puzzle collection</td><td>React 19 / TypeScript / Vite</td></tr>
+        <tr><td><a href="https://github.com/priyanshubishtme/cool-website">Little Universe</a></td><td>Explorable 3D portfolio</td><td>Three.js / Rapier / Vite</td></tr>
+      </tbody>
+    </table>
+    <p>
+      <a href="https://priyanshubishtme.netlify.app/">Portfolio</a> /
+      <a href="https://linkedin.com/in/priyanshubishtme">LinkedIn</a> /
+      <a href="https://youtube.com/@priyanshubishtme">YouTube</a> /
+      <a href="mailto:priyanshubisht.me@gmail.com">Email</a>
+    </p>
+  </main>
+</body>
+</html>
+'''
     (ROOT / "preview.html").write_text(preview, encoding="utf-8")
 
     sources = '''# Asset sources and licenses\n\n- Display face: Barlow Condensed ExtraBold, SIL Open Font License 1.1. License: `assets/fonts/OFL-BarlowCondensed.txt`. Source: https://github.com/google/fonts/tree/main/ofl/barlowcondensed\n- Mono face: JetBrains Mono Regular, SIL Open Font License 1.1. License: `assets/fonts/OFL-JetBrainsMono.txt`. Source: https://github.com/google/fonts/tree/main/ofl/jetbrainsmono\n- Orbit and YouTube brand paths: Simple Icons, embedded from its SVG icon files at https://github.com/simple-icons/simple-icons/tree/develop/icons (Python, JavaScript, TypeScript, React, Next.js, Node.js, Express, MongoDB, MySQL, Git, GitHub, Figma, YouTube). Java and Gymnasium remain text chips because Simple Icons has no matching icon file in the selected set.\n- LinkedIn and email symbols are inline text/envelope marks. No external icon assets are loaded.\n- Portraits: the original RGBA files `assets/id.png` and `assets/right_pointing.png` are embedded byte-for-byte into the SVGs; no masks or redraws are applied.\n'''
@@ -171,7 +227,7 @@ def build() -> None:
     # Make a clean upload archive while leaving source artwork and builder in the working repo.
     zip_path = ROOT / "profile-readme-upload.zip"
     entries = [ROOT / "README.md", ROOT / "preview.html", ROOT / "ASSET-SOURCES.md", ROOT / ".github/workflows/snake.yml", ROOT / "scripts/build_profile.py"]
-    entries += [ASSETS / name for name in ["hero.svg", "about-life.svg", "stack.svg", "id-dashboard.svg", "connect.svg", "id.png", "right_pointing.png"]]
+    entries += [ASSETS / name for name in ["hero.svg", "about-life.svg", "stack.svg", "id-dashboard.svg", "id.png"]]
     entries += list((ASSETS / "fonts").glob("*.txt")) + list((ASSETS / "fonts").glob("*.woff2"))
     entries += list((ASSETS / "icons").glob("*.svg")) + [ASSETS / "icons/LICENSE.txt"]
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=8) as zf:
