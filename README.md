@@ -1,66 +1,36 @@
 <div align="center">
-  <pre>
-                _                        __          __    _      __    __               
-    ____  _____(_)_  ______ _____  _____/ /_  __  __/ /_  (_)____/ /_  / /_____ ___  ___ 
-   / __ \/ ___/ / / / / __ `/ __ \/ ___/ __ \/ / / / __ \/ / ___/ __ \/ __/ __ `__ \/ _ \
-  / /_/ / /  / / /_/ / /_/ / / / (__  ) / / / /_/ / /_/ / (__  ) / / / /_/ / / / / /  __/
- / .___/_/  /_/\__, /\__,_/_/ /_/____/_/ /_/\__,_/_.___/_/____/_/ /_/\__/_/ /_/ /_/\___/ 
-/_/           /____/                                                                     
-  </pre>
-</div>
-<br/>
 
+![Priyanshu Bisht — frontend developer and builder](assets/hero.svg?v=1)
 
-<div align="center">
-  <a href="https://priyanshubishtme.netlify.app/">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=3000&pause=1000&color=F2B441&center=true&vCenter=true&repeat=true&random=false&width=600&height=50&lines=Frontend+Developer+%26+Builder;Turning+ideas+into+scalable+experiences;Ship+fast%2C+learn+faster%2C+Carpie+Diem" alt="Typing SVG" />
-  </a>
+![About Priyanshu](assets/about-life.svg?v=1)
+
+![Priyanshu's technology stack](assets/stack.svg?v=1)
+
+![Profile identity card](assets/id-dashboard.svg?v=1)
+
+![Connect with Priyanshu](assets/connect.svg?v=1)
+
 </div>
 
-<div align="center">
-  <p><i>Nineteen, a builder and creator, curious about tech, people, ideas and life.</i></p>
-</div>
+## Featured work
 
-<br/>
+| Project | What it does | Stack |
+|---|---|---|
+| [AshaPure](https://github.com/priyanshubishtme/ashapur_customer) | Smart dairy e-commerce with shopping, checkout, subscriptions, and role-based access; built end-to-end. | React / Node.js / MongoDB |
+| [Arena Self-Driving](https://github.com/priyanshubishtme/arena-self-driving) | Autonomous highway driving simulator with an agent trained using tabular SARSA reinforcement learning. | Python / Gymnasium / FastAPI |
+| [ZenAlert - SIH26178](https://github.com/priyanshubishtme/zen-alert) | Environmental early-warning dashboard and sensor-node prototype, with a FastAPI service, simulated telemetry, live map, alerting views, and an ESP32-S2 / KiCad node design. | FastAPI / MapLibre / Three.js / ESP32-S2 / KiCad |
+| [LinkPulse](https://github.com/priyanshubishtme/pulse) | URL operations dashboard with governed redirects, campaigns, privacy-conscious analytics, QR creation, CSV import, and admin controls. Deployment is not yet available. | React / Express / TypeScript / PostgreSQL / Prisma / Redis (optional) |
+| [Stardela](https://github.com/priyanshubishtme/stardela) | Daily puzzle collection with Colour Binary and Guzzle puzzles across three difficulty tiers. | React 19 / TypeScript / Vite / Vitest |
+| [Little Universe Portfolio](https://github.com/priyanshubishtme/cool-website) | Route-based portfolio wrapped in an explorable 3D foothill town, with a complete illustrated fallback. | Three.js / Rapier / Vite |
 
+## Contribution activity
 
+![GitHub contribution snake in navy and electric blue](https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake.svg?v=1)
 
-## ✦ The Arsenal
+## Connect
 
-<div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=java,python,js,ts,react,nextjs,nodejs,express,mongodb,mysql,git,github,figma,postman&theme=dark&perline=7" />
-  </a>
-</div>
+[Portfolio](https://priyanshubishtme.netlify.app/) · [LinkedIn](https://linkedin.com/in/priyanshubishtme) · [YouTube](https://youtube.com/@priyanshubishtme) · [Email](mailto:priyanshubisht.me@gmail.com)
 
-<br/>
+---
 
-## ✦ The Archives (Featured Work)
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| 🥛 **[AshaPure](https://priyanshubishtme.netlify.app/)** | A smart dairy e-commerce platform supporting shopping, checkout, subscriptions, and role-based access. Owned end-to-end. | `React` `Node.js` `MongoDB` |
-| 🚘 **[Arena Self-Driving](https://priyanshubishtme.netlify.app/)** | An autonomous highway driving simulator where an agent learns to drive with tabular SARSA reinforcement learning. | `Python` `Gymnasium` `FastAPI` |
-
-
-<br/>
-
-
-## ✦ Contribution Activity
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake-dark.svg" />
-  </picture>
-</div>
-
-<br/>
-
-<div align="center">
-  <a href="https://priyanshubishtme.netlify.app/"><img src="https://img.shields.io/badge/Portfolio-F2B441?style=for-the-badge&logo=Web&logoColor=black" alt="Portfolio" /></a>
-  <a href="https://linkedin.com/in/priyanshubishtme"><img src="https://img.shields.io/badge/LinkedIn-0a0c10?style=for-the-badge&logo=linkedin&logoColor=F2B441" alt="LinkedIn" /></a>
-  <a href="https://youtube.com/@priyanshubishtme"><img src="https://img.shields.io/badge/YouTube-0a0c10?style=for-the-badge&logo=youtube&logoColor=F2B441" alt="YouTube" /></a>
-  <a href="mailto:priyanshubisht.me@gmail.com"><img src="https://img.shields.io/badge/Email-0a0c10?style=for-the-badge&logo=gmail&logoColor=F2B441" alt="Email" /></a>
-</div>
+The five profile SVGs embed their portraits and fonts. Contribution activity is generated by `.github/workflows/snake.yml`; generated self-contained SVGs are published from the `output` branch.
