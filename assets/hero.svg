@@ -11,7 +11,7 @@
  text{fill:#f4f6fb;font-family:Arial,sans-serif} .display{font-family:BC,'Arial Narrow',sans-serif;font-weight:800;letter-spacing:.2px} .mono{font-family:JB,monospace} .muted{fill:#9da8bc}
  .in{animation:rise .8s cubic-bezier(.2,.8,.2,1) both} .in2{animation:rise .8s .16s cubic-bezier(.2,.8,.2,1) both} .in3{animation:rise .8s .3s cubic-bezier(.2,.8,.2,1) both}
  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
- @media(prefers-reduced-motion:reduce){.in,.in2,.in3{animation:none;opacity:1;transform:none} .motion{display:none} .static{display:inline} .slide{display:none!important} .reduced-type{clip-path:none!important}}
+ @media(prefers-reduced-motion:reduce){.in,.in2,.in3{animation:none;opacity:1;transform:none} .motion{display:none} .orbit-motion animateTransform{display:none} .static{display:inline} .slide{display:none!important} .reduced-type{clip-path:none!important}}
  ]]></style>
  <filter id="hero-svg-shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="14"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>

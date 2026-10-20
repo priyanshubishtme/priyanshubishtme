@@ -1,33 +1,34 @@
 <div align="center">
 
-[![Priyanshu Bisht — frontend developer and builder](assets/hero.svg?v=1)](https://priyanshubishtme.netlify.app/)
+![Priyanshu Bisht — frontend developer and builder](assets/hero.svg?v=1)
 
-[![About Priyanshu](assets/about-life.svg?v=1)](https://priyanshubishtme.netlify.app/about)
+![About Priyanshu](assets/about-life.svg?v=1)
 
-[![Priyanshu's technology stack](assets/stack.svg?v=1)](https://github.com/priyanshubishtme)
+![Priyanshu's technology stack](assets/stack.svg?v=1)
 
-[![Profile identity card](assets/id-dashboard.svg?v=1)](https://github.com/priyanshubishtme)
+![Profile identity card](assets/id-dashboard.svg?v=1)
 
-[![Connect with Priyanshu](assets/connect.svg?v=1)](https://priyanshubishtme.netlify.app/)
+![Connect with Priyanshu](assets/connect.svg?v=1)
 
 </div>
 
 ## Selected projects
 
-| Project | What it does | Stack |
+| Project | Focus | Technical implementation |
 |---|---|---|
-| [AshaPure](https://github.com/priyanshubishtme/ashapur_customer) | Smart dairy e-commerce with shopping, checkout, subscriptions, and role-based access; built end-to-end. | React / Node.js / MongoDB |
-| [Arena Self-Driving](https://github.com/priyanshubishtme/arena-self-driving) | Autonomous highway driving simulator with an agent trained using tabular SARSA reinforcement learning. | Python / Gymnasium / FastAPI |
-| [ZenAlert - SIH26178](https://github.com/priyanshubishtme/zen-alert) | Environmental early-warning dashboard and sensor-node prototype, with a FastAPI service, simulated telemetry, live map, alerting views, and an ESP32-S2 / KiCad node design. | FastAPI / MapLibre / Three.js / ESP32-S2 / KiCad |
-| [LinkPulse](https://github.com/priyanshubishtme/pulse) | URL operations dashboard with governed redirects, campaigns, privacy-conscious analytics, QR creation, CSV import, and admin controls. Deployment is not yet available. | React / Express / TypeScript / PostgreSQL / Prisma / Redis (optional) |
-| [Stardela](https://github.com/priyanshubishtme/stardela) | Daily puzzle collection with Colour Binary and Guzzle puzzles across three difficulty tiers. | React 19 / TypeScript / Vite / Vitest |
-| [Little Universe Portfolio](https://github.com/priyanshubishtme/cool-website) | Route-based portfolio wrapped in an explorable 3D foothill town, with a complete illustrated fallback. | Three.js / Rapier / Vite |
+| [AshaPure](https://github.com/priyanshubishtme/ashapur_customer) | Dairy commerce with shopping, checkout, subscriptions, and role-based access. | React frontend, Node.js backend, MongoDB data store. |
+| [Arena Self-Driving](https://github.com/priyanshubishtme/arena-self-driving) | Autonomous highway-driving simulator with a tabular SARSA agent. | Python, Gymnasium environment, FastAPI control surface. |
+| [ZenAlert — SIH26178](https://github.com/priyanshubishtme/zen-alert) | Environmental early-warning dashboard plus sensor-node simulation. | FastAPI, MapLibre, Three.js; ESP32-S2 node and KiCad PCB design. |
+| [LinkPulse](https://github.com/priyanshubishtme/pulse) | Governed short links, campaigns, QR generation, analytics, and admin controls. | React, Express, TypeScript, PostgreSQL, Prisma; Redis is optional. |
+| [Stardela](https://github.com/priyanshubishtme/stardela) | Daily Colour Binary and Guzzle puzzles across three difficulty levels. | React 19, TypeScript, Vite, Vitest. |
+| [Little Universe Portfolio](https://github.com/priyanshubishtme/cool-website) | Route-based portfolio inside an explorable foothill town with a visual fallback. | Three.js, Rapier physics, Vite. |
 
 ## Contribution activity
 
-[![GitHub contribution activity](https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake.svg?v=1)](https://github.com/priyanshubishtme)
+![GitHub contribution activity](https://raw.githubusercontent.com/priyanshubishtme/priyanshubishtme/output/github-snake.svg?v=1)
 
 ## Connect
 
-[Portfolio](https://priyanshubishtme.netlify.app/) · [LinkedIn](https://linkedin.com/in/priyanshubishtme) · [YouTube](https://youtube.com/@priyanshubishtme) · [Email](mailto:priyanshubisht.me@gmail.com)
+| [Portfolio](https://priyanshubishtme.netlify.app/) | [LinkedIn](https://linkedin.com/in/priyanshubishtme) | [YouTube](https://youtube.com/@priyanshubishtme) | [Email](mailto:priyanshubisht.me@gmail.com) |
+|---|---|---|---|
 
