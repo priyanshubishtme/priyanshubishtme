@@ -6,8 +6,6 @@
 
 ![Priyanshu's technology stack](assets/stack.svg?v=1)
 
-![Profile identity card](assets/id-dashboard.svg?v=1)
-
 </div>
 
 ## Selected projects
